@@ -132,13 +132,7 @@ footer {
   margin-top: 10px;
 }
 
-
-/* For mobile phones: */
-[class*="col-"] {
-  width: 100%;
-}
-
-@media only screen and (min-width: 600px) {
+@media only screen and (max-width: 768px) {
   /* For tablets: */
   body {
     width : 100%;
@@ -154,6 +148,9 @@ footer {
   /* For desktop: */
   main {
     flex-direction: row;
+  }
+  aside>ul {
+    display: list-item;
   }
   
 }
