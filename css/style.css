@@ -131,3 +131,29 @@ aside li {
 footer {
   margin-top: 10px;
 }
+
+
+/* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+  body {
+    width : 100%;
+  }
+  main {
+    flex-direction: column;
+  }
+  aside>ul {
+    display: flex;
+  }
+}
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  main {
+    flex-direction: row;
+  }
+  
+}
