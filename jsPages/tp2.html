@@ -6,24 +6,33 @@
     <title>TP</title>
 </head>
 <body>
-    <canvas id="canvas" width="300" height="300">
+    <canvas id="canvas" width="800" height="300">
         Désolé, votre navigateur ne prend pas en charge &lt;canvas&gt;.
     </canvas>
 
     <script>
-        var canvas = document.getElementById('canvas');
-        var ctx = canvas.getContext('2d');
-        ctx.fillStyle = 'red';
-        ctx.fillRect(10, 10, 100, 100);
+        window.addEventListener('load', () => {
+            largeur = 100;
+            hauteur = 100;
+            x = 10;
+            y = 10;
 
-        function moveCanva() {
-            document.getElementById("seconds").innerHTML = String( timeLeft );
-            if (timeLeft <= 0) {
-                clearInterval(timer);
-            }
-        };
+            let canvas = document.getElementById('canvas');
+            let ctx = canvas.getContext('2d');
+            ctx.fillStyle = 'red';
+            ctx.fillRect(x, y, largeur, hauteur);
 
-        var timer = setInterval(moveCanva, 1000);
+            function moveCanvas() {
+                ctx.clearRect(x, y, x+largeur, y+hauteur);
+                x = x + 10;
+                ctx.fillRect(x, y, largeur, hauteur);
+                if (largeur+x >= 800) {
+                    clearInterval(timer);
+                }
+            };
+
+            var timer = setInterval(moveCanvas, 1000);
+        });
     </script>
 </body>
 </html>

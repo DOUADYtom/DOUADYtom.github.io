@@ -11,17 +11,20 @@
     </div>
 
     <script>
-        timeLeft = 10;
+        window.addEventListener('load', () => {
+            timeLeft = 10;
 
-        function countdown() {
-            timeLeft--;
-            document.getElementById("seconds").innerHTML = String( timeLeft );
-            if (timeLeft <= 0) {
-                clearInterval(timer);
-            }
-        };
+            function countdown() {
+                timeLeft--;
+                document.getElementById("seconds").innerHTML = String( timeLeft );
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                }
+            };
 
-        var timer = setInterval(countdown, 1000);
+            var timer = setInterval(countdown, 1000);
+        });
+
     </script>
 </body>
 </html>
