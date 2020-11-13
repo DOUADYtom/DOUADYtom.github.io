@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP5</title>
+</head>
+<body>
+    <canvas id="canvas" width="800" height="300">
+        Désolé, votre navigateur ne prend pas en charge &lt;canvas&gt;.
+    </canvas>
+
+    <script>
+        window.addEventListener('load', () => {
+            function init(){
+                largeur = 100;
+                hauteur = 100;
+                x = 10;
+                y = 10;
+                var timer = 0;
+                let canvas = document.getElementById('canvas');
+                let ctx = canvas.getContext('2d');
+                ctx.fillStyle = 'red';
+                ctx.fillRect(x, y, largeur, hauteur);
+                return ctx;
+            }
+
+            function moveCanvas(i, ctx) {
+                ctx.clearRect(x, y, x+largeur, y+hauteur);
+                x = x + 10;
+                ctx.fillRect(x, y, largeur, hauteur);
+                if(largeur+x >= 800){
+                    clearInterval(timers[i]);
+                }
+            };
+
+            
+            var timers = [];    
+            setTimeout(function(){
+                var ctxs = [];
+                for (let i = 0; i < 10; i++) {
+                    setTimeout(function(){
+                        ctxs[i] = init();
+                        timers[i] = setInterval(moveCanvas, 10, i, ctxs[i]);
+                    }, 1000*i);
+                }
+            }, 4000);
+        });
+        
+    </script>
+</body>
+</html>
