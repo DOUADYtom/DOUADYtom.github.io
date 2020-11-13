@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TP2</title>
+    <title>TP4</title>
 </head>
 <body>
     <canvas id="canvas" width="800" height="300">
@@ -16,7 +16,7 @@
             hauteur = 100;
             x = 10;
             y = 10;
-
+            var timer = 0;
             let canvas = document.getElementById('canvas');
             let ctx = canvas.getContext('2d');
             ctx.fillStyle = 'red';
@@ -30,9 +30,11 @@
                     clearInterval(timer);
                 }
             };
-
-            var timer = setInterval(moveCanvas, 1000);
+            setTimeout(function(){
+                timer = setInterval(moveCanvas, 10);
+            }, 2000);
         });
+        
     </script>
 </body>
 </html>
