@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP3</title>
+</head>
+<body>
+    <style type="text/css">        
+        .carre {
+            width:100px; 
+            height:100px;
+            position: absolute;
+            right:200px;
+            background-color:red;
+            text-align:center; 
+            font-weight:bold
+        }
+    </style>
+
+    <div id="animatedElem" class="carre"></div>
+
+    <script>
+        var start = null;
+            
+        function pausecomp(millis) 
+		{
+			var date = new Date();
+			var curDate = null;
+			do { 
+				curDate = new Date(); 
+			} while(curDate-date < millis);
+		}
+
+        function step(timestamp) {
+            var elem = document.getElementById("animatedElem");
+            var progress;
+            if (start === null) start = timestamp;
+            progress = timestamp - start;
+            elem.style.left = Math.min(progress/10, 800) + "px";
+            if (progress < 8000) {
+                requestAnimationFrame(step);
+            }
+        }
+
+        window.addEventListener('load', () => {
+            window.requestAnimationFrame(step);
+
+        });
+
+    </script>
+</body>
+</html>

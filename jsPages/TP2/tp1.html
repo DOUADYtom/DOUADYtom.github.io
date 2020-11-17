@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP1</title>
+</head>
+<body>
+    <style type="text/css">        
+        .carre {
+            width:100px; 
+            height:100px;
+            position: absolute;
+            right:200px;
+            background-color:red;
+            text-align:center; 
+            font-weight:bold
+        }
+    </style>
+
+    <div id="animatedElem" class="carre"></div>
+
+    <script>
+        function pausecomp(millis) 
+		{
+			var date = new Date();
+			var curDate = null;
+			do { 
+				curDate = new Date(); 
+			} while(curDate-date < millis);
+		}
+
+        window.addEventListener('load', () => {
+            var elem = document.getElementById("animatedElem");
+            var left = 800;
+            var timer;
+            // Move the element 10px on the right every 16ms
+            timer = setInterval(function() {
+                elem.style.left = ( left -= 10 ) + "px";
+                pausecomp(1000);
+                // clear the timer at 400px to stop the animation
+                if ( left <= 10 ) {
+                    clearInterval( timer );
+                }
+            }, 16);
+            
+        });
+    </script>
+</body>
+</html>
