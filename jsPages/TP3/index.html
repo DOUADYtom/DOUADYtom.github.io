@@ -32,6 +32,10 @@ Cependant, on peut  attacher à l'élément ses propres événements grâce à �
 		<CANVAS WIDTH="500" HEIGHT="400" ID="canvas_1" tabindex="0" style="border-style: solid; border-width: 2px; width: 500px;">
 			Canvas tag not supported
 		</CANVAS>
+		<div style="display:none;">
+			<img id="sprite" src="./hero_walk_cycle_spritesheet_by_mrnoobtastic-d3defej.png"
+				width="512" height="512">
+		</div>
     <p>
     On déplace le rectangle avec les touches de flêches. Vous ne trouvez pas que quelque chose cloche? Oui: les flêches permettent aussi de se déplacer dans la fenêtre... Il faudrait désactiver le comportement pas défaut de ces touches:
         <pre>e.preventDefault();</pre>
@@ -77,7 +81,9 @@ Cependant, on peut  attacher à l'élément ses propres événements grâce à �
 		var y = 100;
 
 		function doKeyDown(e){ 
-             //e.preventDefault();
+			e.preventDefault();
+
+			var img = document.getElementById("sprite");
 
 			//====================
 			//	THE down-arrow KEY
@@ -85,7 +91,8 @@ Cependant, on peut  attacher à l'élément ses propres événements grâce à �
 			if (e.keyCode == 40) {
 				clearCanvas();
 				y = y + 10;
-				canvas_context.fillRect(x, y, 50, 30);
+				drawImage("down", x, y, canvas_context);
+				// canvas_context.fillRect(x, y, 50, 30);
 			}
 
 			//====================
@@ -94,7 +101,8 @@ Cependant, on peut  attacher à l'élément ses propres événements grâce à �
 			if (e.keyCode == 38) {
 				clearCanvas();
 				y = y - 10;
-				canvas_context.fillRect(x, y, 50, 30);
+				drawImage("up", x, y, canvas_context);
+				// canvas_context.fillRect(x, y, 50, 30);
 			}
 
 			//====================
@@ -103,7 +111,8 @@ Cependant, on peut  attacher à l'élément ses propres événements grâce à �
 			if (e.keyCode == 37) {
 				clearCanvas();
 				x = x - 10;
-				canvas_context.fillRect(x, y, 50, 30);
+				drawImage("left", x, y, canvas_context);
+				// canvas_context.fillRect(x, y, 50, 30);
 			}
 
 			//====================
@@ -112,8 +121,8 @@ Cependant, on peut  attacher à l'élément ses propres événements grâce à �
 			if (e.keyCode == 39) {
 				clearCanvas();
 				x = x + 10;
-				canvas_context.fillRect(x, y, 50, 30);
-    
+				drawImage("right", x, y, canvas_context);
+				// canvas_context.fillRect(x, y, 50, 30);
             }
             
             //Space is 32, Enter is 13, Tab is 9, esc is 27, backspace is 8... 
@@ -124,7 +133,33 @@ Cependant, on peut  attacher à l'élément ses propres événements grâce à �
 		function clearCanvas() {
 			canvas.width = canvas.width;
 		}
-    
+
+		function boucleDraw(xImg, x, y, ctx) {
+			var larImg = 128;
+			var hautImg = 128;
+			var yImg = 0;
+		}
+
+		function drawImage(txt, x, y, ctx) {
+			console.log("test2" + ctx);
+			var xImg = 0;
+			switch(txt) {
+				case "down":
+					xImg = 128*3;
+					break;
+				case "up":
+					xImg = 128*2;
+					break;
+				case "right":
+					xImg = 128;
+					break;
+				case "left":
+					break;
+				default:
+					console.log("prob pour draw image");
+			}
+			boucleDraw(xImg, x, y, ctx);
+		}
     </script>
 </html>    
     
