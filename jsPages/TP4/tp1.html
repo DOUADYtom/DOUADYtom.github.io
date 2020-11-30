@@ -21,6 +21,10 @@ Now updated!!! And Again.
 See <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers"> mdn web site</a> for yet better code.
 </p>
 
+<p id="alendar">
+
+</p>
+
 <script> 
 	// Script for Service Worker 
 	window.addEventListener('load', () => { 
@@ -36,7 +40,7 @@ See <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API
         ).then(function(response){
             return response.text();
         }).then(function(text){
-
+        document.querySelector('#calendar').innerHTML = text;
         //console.log(text);
 
         var jCalData = ICAL.parse(text);
@@ -44,7 +48,7 @@ See <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API
         let events = jCalData[1][2];
         events.forEach(e => result.push(flattenEvent(e)));
         console.log(events);
-        
+
         /*
         var vcalendar = new ICAL.Component(jCalData);
         if(Array.isArray(vcalendar)) {
