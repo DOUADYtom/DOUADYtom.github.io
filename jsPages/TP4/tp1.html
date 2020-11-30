@@ -38,6 +38,7 @@ See <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API
         }).then(function(text){
 
         console.log(text);
+
         var jCalData = ICAL.parse(text);
         let result = []
         let events = jCalData[1][2];
@@ -78,7 +79,7 @@ See <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API
             try { 
                 await navigator 
                         .serviceWorker 
-                        .register('serviceworker.js'); 
+                        .register('.\serviceworker.js'); 
             } 
             catch (e) { 
                 console.log('SW registration failed : ' + e); 
