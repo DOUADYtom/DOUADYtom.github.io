@@ -5,9 +5,8 @@ var url = 'https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/VOnEjzW
 
 var filesToCache = [
 	'/',
-	'https://cors-anywhere.herokuapp.com/https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/VOnEjzWr.shu'
+	cors_api_url+url
 ]
-
 
 self.addEventListener("install", function (e) { 
   e.waitUntil(
