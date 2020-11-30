@@ -75,11 +75,11 @@ See <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API
 
     // Register the Service Worker 
     async function registerSW() { 
-        if ('serviceWorker' in navigator) { 
+        if ('serviceworker' in navigator) { 
             try { 
                 await navigator 
                         .serviceWorker 
-                        .register('./serviceworker.js'); 
+                        .register('serviceworker.js'); 
             } 
             catch (e) { 
                 console.log('SW registration failed : ' + e); 
